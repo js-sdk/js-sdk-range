@@ -1,17 +1,18 @@
 {
   "name": "js-sdk-range",
-  "version": "0.1.0",
-  "description": "Simple range generator utility.",
-  "main": "./src/index.js",
+  "version": "0.1.1",
+  "description": "Simple range utility.",
+  "main": "./lib/range.js",
   "repository": "https://github.com/js-sdk/js-sdk-range",
-  "author": "Bruno Dias",
   "license": "Unlicense",
+  "author": "Bruno Dias",
   "scripts": {
     "test": "make test"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",

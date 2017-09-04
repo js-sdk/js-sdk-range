@@ -1,16 +1,35 @@
 BABEL=./node_modules/babel-cli/bin/babel.js
 MOCHA=./node_modules/mocha/bin/mocha
 
-CFLAGS=--compilers js:babel-register --require should
+CFLAGS=--plugins transform-es2015-modules-umd
+TEST_CFLAGS=--compilers js:babel-register --require should
 
 ifeq ("$(DEV)", "1")
 CFLAGS+= -w
 endif
 
-index.js: src/index.js
+pre-build:
+	-mkdir -p lib
+	-mkdir -p dist
+
+lib/range.js: src/index.js
 	$(BABEL) $< -o $@
 
-all: index.js test
+dist/range.js: src/index.js
+	$(BABEL) $(CFLAGS) $< -o $@
+
+dist/range.min.js: src/index.js
+	$(BABEL) $(CFLAGS) --minified $< -o $@
+
+compile: pre-build dist/range.js dist/range.min.js
+
+all: compile lib/range.js
 
 test:
-	$(MOCHA) $(CFLAGS) tests/*.js
+	$(MOCHA) $(TEST_CFLAGS) tests/*.js
+
+clean:
+	rm -rf lib dist
+
+clean-all: clean
+	rm -rf node_modules

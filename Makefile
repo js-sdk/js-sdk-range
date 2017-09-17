@@ -17,9 +17,6 @@ dist-all: pre-build dist/range.js dist/range.min.js lib/range.js
 
 all: test dist-all lib/range.js
 
-test:
-	$(MOCHA) $(TEST_CFLAGS) tests/*.js
-
 clean:
 	rm -rf lib dist
 

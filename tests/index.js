@@ -4,7 +4,7 @@ import * as R from '../src/index.js';
 
 describe("range", () => {
   context("numeric", () => {
-    it("empty range.", () => {
+    it("zero range.", () => {
       R.range(0, 0).should.be.eql([]);
     });
 
@@ -33,6 +33,14 @@ describe("range", () => {
     context("steps", () => {
       it("[1..10), 2", () => {
         R.rangeStep(1, 10, 2).length.should.be.eql(5);
+      });
+
+      it("[1..10]", () => {
+        R.rangeInclStep(1, 10, 2).length.should.be.eql(6);
+      });
+
+      it("zero step should return empty list.", () => {
+        R.rangeImpl(1, 1, 0).should.be.eql([]);
       });
     });
   });

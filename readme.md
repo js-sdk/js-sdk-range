@@ -2,6 +2,8 @@
 
 Simple range utilities.
 
+[![Build Status](https://travis-ci.org/js-sdk/js-sdk-range.svg?branch=master)](https://travis-ci.org/js-sdk/js-sdk-range) [![Coverage Status](https://coveralls.io/repos/github/js-sdk/js-sdk-range/badge.svg?branch=master)](https://coveralls.io/github/js-sdk/js-sdk-range?branch=master)
+
 ## Library
 
 ### between(value, lower, higher)

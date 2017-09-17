@@ -2,3 +2,6 @@ lib/*
 node_modules/**
 yarn.lock
 package-lock.json
+builder/**
+coverage/**
+.nyc_output/**

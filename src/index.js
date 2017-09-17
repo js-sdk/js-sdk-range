@@ -11,9 +11,9 @@ export const rangeIn = (start, end, range) =>
 
 export const rangeImpl = (start, end, step, f) => {
   const length = end - start;
-  const elements = step > 1 ?
-      (length - (step == 1 ? 0 : Math.round(length / step))) :
-      Math.round(length / step);
+  if (length == 0 || step == 0) { return []; }
+  const steps = Math.round(length / step);
+  const elements = step > 1 ? (length - steps) : steps;
   const ls = new Array(elements);
   for (let i = 0; i < length && i <= elements; i++) {
     ls[i] = f((i * step) + start);
@@ -27,7 +27,7 @@ export const rangeChar = (start, end) => {
   let ok = rangeIn(x, y, charLowerRange) ||
       rangeIn(x, y, charUpperRange) ||
       rangeIn(x, y, charNumberRange);
-  return ok ? rangeImpl( x, y + 1, 1, String.fromCharCode) : [];
+  return ok ? rangeImpl(x, y + 1, 1, String.fromCharCode) : [];
 };
 
 export const rangeStep = (start, end, step) =>
